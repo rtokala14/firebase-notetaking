@@ -1,20 +1,12 @@
-import { ChevronDown, Moon, Sun } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "./components/ui/dropdown-menu";
 import { Button } from "./components/ui/button";
 
-import { darkTheme } from "./lib/themer";
 import { auth, logout, signInWithGooglePopup } from "./lib/firebase";
 
 import { useAuthState } from "react-firebase-hooks/auth";
+import ThemeDropdown from "./components/themeDropdown";
 
 function App() {
   // Theme Stuff
-  const { theme, setTheme } = darkTheme();
 
   // Auth Stuff
   const [user, loading, error] = useAuthState(auth);
@@ -33,30 +25,7 @@ function App() {
           {user ? "Log Out" : "Sign in with Google"}
         </Button>
         {/* Theme DropDown */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant={"subtle"}>
-              <span>Theme</span>
-              <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuCheckboxItem
-              checked={theme === "light"}
-              onCheckedChange={() => setTheme("light")}
-            >
-              <Sun className="mr-2 h-4 w-4" />
-              <span>Light</span>
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem
-              checked={theme === "dark"}
-              onCheckedChange={() => setTheme("dark")}
-            >
-              <Moon className="mr-2 h-4 w-4" />
-              <span>Dark</span>
-            </DropdownMenuCheckboxItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <ThemeDropdown />
       </div>
       <div>
         {user ? `Logged in as ${user.displayName}` : "User not logged in"}
