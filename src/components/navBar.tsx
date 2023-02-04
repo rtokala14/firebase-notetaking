@@ -10,7 +10,7 @@ const NavBar = () => {
   const location = useLocation();
 
   return (
-    <nav className=" py-2 px-1 items-center justify-evenly w-full flex border-b border-b-slate-200 dark:border-b-slate-700">
+    <nav className=" py-2 px-2 items-center justify-between w-full flex border-b border-b-slate-200 dark:border-b-slate-700">
       {/* Logo */}
       <Button
         variant={"ghost"}
@@ -21,16 +21,18 @@ const NavBar = () => {
       </Button>
 
       {/* Test Login Button */}
-      {location.pathname !== "/login" && (
-        <Button
-          onClick={user ? logout : () => navigate("/login")}
-          variant={user ? "outline" : "default"}
-        >
-          {user ? "Log Out" : "Sign in"}
-        </Button>
-      )}
-      {/* Theme DropDown */}
-      <ThemeDropdown />
+      <div className=" flex gap-2 items-center">
+        {location.pathname !== "/login" && (
+          <Button
+            onClick={user ? logout : () => navigate("/login")}
+            variant={user ? "outline" : "default"}
+          >
+            {user ? "Log Out" : "Sign in"}
+          </Button>
+        )}
+        {/* Theme DropDown */}
+        <ThemeDropdown />
+      </div>
     </nav>
   );
 };
