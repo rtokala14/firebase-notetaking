@@ -1,3 +1,4 @@
+import { StickyNote } from "lucide-react";
 import { auth, logout, signInWithGooglePopup } from "../lib/firebase";
 import ThemeDropdown from "./themeDropdown";
 import { Button } from "./ui/button";
@@ -14,10 +15,11 @@ const NavBar = () => {
       {/* Logo */}
       <Button
         variant={"ghost"}
-        className=" text-xl font-semibold"
+        className=" text-2xl font-semibold"
         onClick={() => navigate("/")}
       >
-        Note-ify
+        <StickyNote className=" mr-2 h-6 w-6" />
+        <span>Note-ify</span>
       </Button>
 
       {/* Test Login Button */}
@@ -27,7 +29,14 @@ const NavBar = () => {
             onClick={user ? logout : () => navigate("/login")}
             variant={user ? "outline" : "default"}
           >
-            {user ? "Log Out" : "Sign in"}
+            {user && !loading ? (
+              <div className=" flex gap-2 items-center">
+                <img src={user.photoURL!} className=" rounded-full h-7 w-7" />
+                <span>Log Out</span>
+              </div>
+            ) : (
+              "Sign in"
+            )}
           </Button>
         )}
         {/* Theme DropDown */}
