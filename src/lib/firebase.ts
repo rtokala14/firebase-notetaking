@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   signOut,
   GoogleAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -21,6 +22,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const signInWithGooglePopup = async () => {
   try {
@@ -31,8 +33,17 @@ const signInWithGooglePopup = async () => {
   }
 };
 
+const signInWithGithubPopup = async () => {
+  try {
+    const res = await signInWithPopup(auth, githubProvider);
+    const user = res.user;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const logout = () => {
   signOut(auth);
 };
 
-export { auth, signInWithGooglePopup, logout };
+export { auth, signInWithGooglePopup, logout, signInWithGithubPopup };
