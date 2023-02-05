@@ -5,6 +5,7 @@ import {
   signOut,
   GoogleAuthProvider,
   GithubAuthProvider,
+  TwitterAuthProvider,
 } from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -23,6 +24,7 @@ const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
 
 const signInWithGooglePopup = async () => {
   try {
@@ -42,8 +44,23 @@ const signInWithGithubPopup = async () => {
   }
 };
 
+const signInWithTwitterPopup = async () => {
+  try {
+    const res = await signInWithPopup(auth, twitterProvider);
+    const user = res.user;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const logout = () => {
   signOut(auth);
 };
 
-export { auth, signInWithGooglePopup, logout, signInWithGithubPopup };
+export {
+  auth,
+  signInWithGooglePopup,
+  logout,
+  signInWithGithubPopup,
+  signInWithTwitterPopup,
+};

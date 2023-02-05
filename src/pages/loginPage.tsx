@@ -3,6 +3,7 @@ import {
   auth,
   signInWithGooglePopup,
   signInWithGithubPopup,
+  signInWithTwitterPopup,
 } from "../lib/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -32,8 +33,12 @@ export default function LoginPage() {
         >
           Login with GitHub
         </Button>
-        <Button variant={"default"} className=" w-full">
-          Login with Discord (TODO)
+        <Button
+          variant={"default"}
+          onClick={signInWithTwitterPopup}
+          className=" w-full"
+        >
+          Login with Twitter
         </Button>
       </div>
     </div>
