@@ -33,13 +33,13 @@ export default function LoginPage() {
         >
           Login with GitHub
         </Button>
-        <Button
+        {/* <Button
           variant={"default"}
           onClick={signInWithTwitterPopup}
           className=" w-full"
         >
           Login with Twitter
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
