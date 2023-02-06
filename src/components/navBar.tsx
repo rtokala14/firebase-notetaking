@@ -31,7 +31,11 @@ const NavBar = () => {
           >
             {user && !loading ? (
               <div className=" flex gap-2 items-center">
-                <img src={user.photoURL!} className=" rounded-full h-7 w-7" />
+                <img
+                  src={user.photoURL!}
+                  alt={`${user.displayName}'s profile picture`}
+                  className=" rounded-full h-7 w-7"
+                />
                 <span>Log Out</span>
               </div>
             ) : (

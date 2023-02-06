@@ -15,7 +15,7 @@ const ThemeDropdown = () => {
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant={"subtle"}>
+          <Button variant={"subtle"} aria-label="Theme selection">
             {theme === "light" ? (
               <Sun className=" h-5 w-5" />
             ) : (
