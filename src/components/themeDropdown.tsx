@@ -16,7 +16,12 @@ const ThemeDropdown = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant={"subtle"}>
-            <span>Theme</span>
+            {theme === "light" ? (
+              <Sun className=" h-5 w-5" />
+            ) : (
+              <Moon className=" h-5 w-5" />
+            )}
+            {/* <span>Theme</span> */}
             <ChevronDown className="ml-2 h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
