@@ -4,7 +4,8 @@ import { NavLink, Outlet } from "react-router-dom";
 export function LoggedInLayout() {
   return (
     <div className=" w-full min-h-full flex">
-      <div className=" h-[93vh] w-18 group hover:w-32 flex flex-col items-center hover:items-start gap-4 px-2 hover:px-0 pt-4 border-r border-r-slate-200 dark:border-r-slate-700">
+      {/* Sidebar */}
+      <div className=" animate-in fade-in-20 duration-1000 slide-in-from-left-2 h-[93vh] w-18 group hover:w-32 flex flex-col items-center hover:items-start gap-4 px-2 hover:px-0 pt-4 border-r border-r-slate-200 dark:border-r-slate-800 transition-width ease-in-out">
         <NavLink
           to={"/notes"}
           className={({ isActive }) =>
