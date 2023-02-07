@@ -15,7 +15,7 @@ const NavBar = () => {
       {/* Logo */}
       <Button
         variant={"ghost"}
-        className=" text-2xl font-semibold"
+        className=" text-2xl font-semibold animate-in slide-in-from-top-6 duration-700"
         onClick={() => navigate("/")}
       >
         <StickyNote className=" mr-2 h-6 w-6" />
