@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
 import { BaseLayout } from "./layouts/BaseLayout";
 import LoginPage from "./pages/loginPage";
 import HomePage from "./pages/homePage";
@@ -52,11 +52,11 @@ export const router = createBrowserRouter([
 ]);
 
 function RequireAuth({ children }: { children: JSX.Element }) {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
-  if (!user) {
+  if (!user && !loading) {
     return <Navigate to={"/"} replace />;
   }
 
-  return children;
+  return children ? children : <Outlet />;
 }

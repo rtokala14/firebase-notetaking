@@ -3,17 +3,15 @@ import {
   auth,
   signInWithGooglePopup,
   signInWithGithubPopup,
-  signInWithTwitterPopup,
 } from "../lib/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export default function LoginPage() {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
-  const navigate = useNavigate();
-  if (user) {
-    navigate("/");
+  if (user && !loading) {
+    return <Navigate to={"/notes"} replace />;
   }
   return (
     <div className=" flex flex-col w-full items-center h-[90vh] justify-center ">
