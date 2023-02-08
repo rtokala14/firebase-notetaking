@@ -72,4 +72,5 @@ export {
   signInWithGithubPopup,
   signInWithTwitterPopup,
   db,
+  app,
 };
