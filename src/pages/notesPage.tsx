@@ -14,7 +14,7 @@ function NotesPage() {
     <div className=" w-full flex flex-col items-center pt-10">
       <form
         ref={ref}
-        className=" w-2/4 border dark:border-slate-700 border-slate-200 rounded-md flex flex-col gap-2 p-2 h-fit"
+        className=" w-4/5 md:w-2/4 border dark:border-slate-700 border-slate-200 rounded-md flex flex-col gap-2 p-2 h-fit"
       >
         {formOpen && <Input placeholder="Title" />}
         <Textarea
