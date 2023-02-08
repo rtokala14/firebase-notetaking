@@ -4,9 +4,10 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
-import { db } from "../lib/firebase";
+import { auth, db } from "../lib/firebase";
 import { v4 as uuidv4 } from "uuid";
 import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function CreateNoteForm() {
   // handle displaying the form on focus
@@ -16,8 +17,9 @@ function CreateNoteForm() {
   // Store input and handle submit
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [user, loading] = useAuthState(auth);
 
-  const collectionRef = collection(db, "userNotes");
+  const collectionRef = collection(db, !loading && user ? user.uid : "theVoid");
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -33,6 +35,8 @@ function CreateNoteForm() {
     try {
       const noteRef = doc(collectionRef, newNote.id);
       await setDoc(noteRef, newNote);
+      setTitle("");
+      setBody("");
     } catch (error) {
       console.log(error);
     }
