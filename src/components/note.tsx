@@ -14,10 +14,10 @@ function Note({ noteData }: { noteData: DocumentData }) {
   }
 
   return (
-    <div className=" relative break-inside-avoid mb-4 rounded-md group min-h-[140px] border gap-1 dark:border-slate-700 border-slate-200 flex flex-col items-start p-2 pb-8">
-      <div>{noteData.title}</div>
+    <div className=" relative max-h-[440px] break-inside-avoid mb-4 rounded-md group min-h-[140px] border gap-1 dark:border-slate-700 border-slate-200 flex flex-col items-start p-2 pb-8">
+      <div className=" text-xl font-medium">{noteData.title}</div>
       <hr className=" bg-slate-200 dark:bg-slate-700 w-full h-[1px]" />
-      <div>{noteData.body}</div>
+      <div className=" overflow-hidden">{noteData.body}</div>
       <div className=" absolute bottom-2 w-full hidden group-hover:flex gap-2">
         <Trash
           className=" h-5 w-5 hover:cursor-pointer text-red-400"
