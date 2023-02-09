@@ -38,7 +38,7 @@ function Note({ noteData }: { noteData: DocumentData }) {
       <div className=" flex justify-between items-center w-full">
         <div className=" text-xl font-medium py-2">{noteData.title}</div>
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger asChild>
             <Button className=" rounded-full p-3" variant={"ghost"}>
               <MoreVertical className=" h-4 w-4 " />
             </Button>

@@ -1,4 +1,4 @@
-import { StickyNote } from "lucide-react";
+import { Github, StickyNote } from "lucide-react";
 import { auth, logout, signInWithGooglePopup } from "../lib/firebase";
 import ThemeDropdown from "./themeDropdown";
 import { Button } from "./ui/button";
@@ -19,11 +19,20 @@ const NavBar = () => {
         onClick={() => navigate("/")}
       >
         <StickyNote className=" mr-2 h-6 w-6" />
-        <span>Note-ify</span>
+        <span className=" hidden sm:block">Note-ify</span>
       </Button>
 
       {/* Test Login Button */}
       <div className=" flex gap-2 items-center">
+        <Button variant={"link"} className=" rounded-full">
+          <a
+            href="https://github.com/rtokala14/firebase-notetaking"
+            rel={"noreferrer"}
+            target="_blank"
+          >
+            <Github className=" h-4 w-4" />
+          </a>
+        </Button>
         {location.pathname !== "/login" && (
           <Button
             onClick={user ? logout : () => navigate("/login")}
