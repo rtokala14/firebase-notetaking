@@ -10,7 +10,7 @@ export function LoggedInLayout() {
           to={"/notes"}
           className={({ isActive }) =>
             isActive
-              ? "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center bg-slate-400 dark:bg-slate-700 gap-3 hover:bg-slate-200 dark:hover:bg-slate-800 dark:border-r-slate-700"
+              ? "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center bg-slate-300 dark:bg-slate-700 gap-3 hover:bg-slate-200 dark:hover:bg-slate-800 dark:border-r-slate-700"
               : "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-800 dark:border-r-slate-700"
           }
         >
@@ -21,7 +21,7 @@ export function LoggedInLayout() {
           to={"/archive"}
           className={({ isActive }) =>
             isActive
-              ? "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center bg-slate-400 dark:bg-slate-700 gap-3 hover:bg-slate-200 dark:hover:bg-slate-800 dark:border-r-slate-700"
+              ? "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center bg-slate-300 dark:bg-slate-700 gap-3 hover:bg-slate-200 dark:hover:bg-slate-800 dark:border-r-slate-700"
               : "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-800 dark:border-r-slate-700"
           }
         >
@@ -32,7 +32,7 @@ export function LoggedInLayout() {
           to={"/trash"}
           className={({ isActive }) =>
             isActive
-              ? "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center bg-slate-400 dark:bg-slate-700 gap-3 hover:bg-slate-200 dark:hover:bg-slate-800 dark:border-r-slate-700"
+              ? "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center bg-slate-300 dark:bg-slate-700 gap-3 hover:bg-slate-200 dark:hover:bg-slate-800 dark:border-r-slate-700"
               : "rounded-full group-hover:rounded-l-none p-2 w-full flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-800 dark:border-r-slate-700"
           }
         >
