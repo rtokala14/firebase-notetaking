@@ -13,13 +13,14 @@ import Note from "./note";
 
 function NotesList() {
   const [user, loading] = useAuthState(auth);
-  const collectionRef = collection(db, !loading && user ? user.uid : "theVoid");
+  const collectionRef = collection(db, "userNotes");
   const [notes, setNotes] = useState<DocumentData[]>([]);
 
   useEffect(() => {
     const q = query(
       collectionRef,
       orderBy("lastUpdate", "desc"),
+      where("userId", "==", user ? user.uid : "null"),
       where("trash", "==", false),
       where("archive", "==", false)
     );

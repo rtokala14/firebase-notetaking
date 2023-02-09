@@ -19,7 +19,7 @@ function CreateNoteForm() {
   const [body, setBody] = useState("");
   const [user, loading] = useAuthState(auth);
 
-  const collectionRef = collection(db, !loading && user ? user.uid : "theVoid");
+  const collectionRef = collection(db, "userNotes");
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -28,6 +28,7 @@ function CreateNoteForm() {
       title,
       body,
       id: uuidv4(),
+      userId: user?.uid,
       createdAt: serverTimestamp(),
       lastUpdate: serverTimestamp(),
       trash: false,
