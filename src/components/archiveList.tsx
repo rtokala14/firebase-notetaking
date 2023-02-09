@@ -1,17 +1,17 @@
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "../lib/firebase";
 import {
   type DocumentData,
   collection,
-  onSnapshot,
   query,
   orderBy,
   where,
+  onSnapshot,
 } from "firebase/firestore";
-import { auth, db } from "../lib/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
 import Note from "./note";
 
-function NotesList() {
+function ArchiveList() {
   const [user, loading] = useAuthState(auth);
   const collectionRef = collection(db, !loading && user ? user.uid : "theVoid");
   const [notes, setNotes] = useState<DocumentData[]>([]);
@@ -21,7 +21,7 @@ function NotesList() {
       collectionRef,
       orderBy("lastUpdate", "desc"),
       where("trash", "==", false),
-      where("archive", "==", false)
+      where("archive", "==", true)
     );
 
     const unsub = onSnapshot(q, (querySnapshot) => {
@@ -46,4 +46,4 @@ function NotesList() {
   );
 }
 
-export default NotesList;
+export default ArchiveList;

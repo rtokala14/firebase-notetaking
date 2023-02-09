@@ -30,6 +30,9 @@ function CreateNoteForm() {
       id: uuidv4(),
       createdAt: serverTimestamp(),
       lastUpdate: serverTimestamp(),
+      trash: false,
+      archive: false,
+      tags: [],
     };
 
     try {
