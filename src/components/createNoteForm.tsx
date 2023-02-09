@@ -37,6 +37,7 @@ function CreateNoteForm() {
       await setDoc(noteRef, newNote);
       setTitle("");
       setBody("");
+      setFormOpen(false);
     } catch (error) {
       console.log(error);
     }
