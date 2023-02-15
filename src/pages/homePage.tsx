@@ -11,7 +11,7 @@ export default function HomePage() {
     return <Navigate to={"/notes"} replace />;
   }
   return (
-    <div className=" h-[90vh] hero">
+    <div className=" min-h-screen md:h-[90vh] hero">
       <div className="hero-content">
         <div className=" flex flex-col gap-1">
           <h1 className="text-5xl font-medium">Hello There!</h1>

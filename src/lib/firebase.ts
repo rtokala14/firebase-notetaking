@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
   TwitterAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
 } from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -39,10 +41,30 @@ const signInWithGooglePopup = async () => {
   }
 };
 
+const signInWithGoogleRedirect = async () => {
+  try {
+    const res = await signInWithRedirect(auth, googleProvider);
+    const reRes = await getRedirectResult(auth);
+    const user = reRes?.user;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const signInWithGithubPopup = async () => {
   try {
     const res = await signInWithPopup(auth, githubProvider);
     const user = res.user;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const signInWithGithubRedirect = async () => {
+  try {
+    const res = await signInWithRedirect(auth, githubProvider);
+    const reRes = await getRedirectResult(auth);
+    const user = reRes?.user;
   } catch (error) {
     console.log(error);
   }
@@ -68,8 +90,10 @@ const db = getFirestore(app);
 export {
   auth,
   signInWithGooglePopup,
+  signInWithGoogleRedirect,
   logout,
   signInWithGithubPopup,
+  signInWithGithubRedirect,
   signInWithTwitterPopup,
   db,
   app,

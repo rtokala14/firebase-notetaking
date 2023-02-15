@@ -3,6 +3,8 @@ import {
   auth,
   signInWithGooglePopup,
   signInWithGithubPopup,
+  signInWithGoogleRedirect,
+  signInWithGithubRedirect,
 } from "../lib/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate } from "react-router-dom";
@@ -19,15 +21,29 @@ export default function LoginPage() {
       <div className=" border border-slate-200 dark:border-slate-700 rounded-xl p-4 flex flex-col items-center gap-4">
         <Button
           variant={"default"}
-          className=" w-full"
+          className=" w-full hidden sm:block"
           onClick={signInWithGooglePopup}
         >
           Login with Google
         </Button>
         <Button
           variant={"default"}
+          className=" w-full sm:hidden"
+          onClick={signInWithGoogleRedirect}
+        >
+          Login with Google
+        </Button>
+        <Button
+          variant={"default"}
           onClick={signInWithGithubPopup}
-          className=" w-full"
+          className=" w-full hidden sm:block"
+        >
+          Login with GitHub
+        </Button>
+        <Button
+          variant={"default"}
+          className=" w-full sm:hidden"
+          onClick={signInWithGithubRedirect}
         >
           Login with GitHub
         </Button>
