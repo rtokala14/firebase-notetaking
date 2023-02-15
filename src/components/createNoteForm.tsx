@@ -33,6 +33,7 @@ function CreateNoteForm() {
       lastUpdate: serverTimestamp(),
       trash: false,
       archive: false,
+      theme: "default",
       tags: [],
     };
 
@@ -50,7 +51,9 @@ function CreateNoteForm() {
     <form
       ref={ref}
       onSubmit={handleSubmit}
-      className=" w-4/5 md:w-2/4 border dark:border-slate-700 border-slate-200 rounded-md flex flex-col gap-2 p-2 h-fit"
+      className={cn(
+        " w-4/5 md:w-2/4 border dark:border-slate-700 border-slate-200 rounded-md flex flex-col gap-2 p-2 h-fit"
+      )}
     >
       {formOpen && (
         <Input
