@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from "./ui/dropdown-menu";
-import { Archive, MoreVertical, Trash, Undo } from "lucide-react";
+import { Archive, MoreVertical, Pin, PinOff, Trash, Undo } from "lucide-react";
 import { Button } from "./ui/button";
 
 function Note({ noteData }: { noteData: DocumentData }) {
@@ -33,6 +33,14 @@ function Note({ noteData }: { noteData: DocumentData }) {
     const ret = deleteDoc(ref);
   }
 
+  function addPin() {
+    const ret = updateDoc(ref, { pinned: true });
+  }
+
+  function removePin() {
+    const ret = updateDoc(ref, { pinned: false });
+  }
+
   return (
     <div className=" relative max-h-[440px] break-inside-avoid mb-4 rounded-md group min-h-[140px] border gap-1 dark:border-slate-700 border-slate-200 flex flex-col items-start p-2 pb-8">
       <div className=" flex justify-between items-center w-full">
@@ -44,6 +52,23 @@ function Note({ noteData }: { noteData: DocumentData }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
+            {noteData.pinned ? (
+              <DropdownMenuItem
+                className=" flex items-center"
+                onClick={() => removePin()}
+              >
+                <PinOff className=" mr-2 h-4 w-4" />
+                <span>Remove Pin</span>
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem
+                className=" flex items-center"
+                onClick={() => addPin()}
+              >
+                <Pin className=" mr-2 h-4 w-4" />
+                <span>Pin Note</span>
+              </DropdownMenuItem>
+            )}
             <DropdownMenuItem
               className=" items-center flex"
               onClick={() => (noteData.trash ? undoDelete() : handleDelete())}

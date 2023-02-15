@@ -16,6 +16,10 @@ function NotesList() {
   const collectionRef = collection(db, "userNotes");
   const [notes, setNotes] = useState<DocumentData[]>([]);
 
+  const pinnedNotes: DocumentData[] = notes.filter((note) => {
+    if (note.pinned) return note;
+  });
+
   useEffect(() => {
     const q = query(
       collectionRef,
@@ -39,10 +43,25 @@ function NotesList() {
   }, [loading]);
 
   return (
-    <div className=" columns-1 [column-fill:_balance] md:columns-3 lg:columns-4 gap-4 h-full w-full px-4 space-y-4">
-      {notes.map((note) => (
-        <Note key={note.id} noteData={note} />
-      ))}
+    <div className=" w-full h-full px-4">
+      <p>Pinned</p>
+      <div className="mb-4 columns-1 [column-fill:_balance] md:columns-3 lg:columns-4 gap-4 w-full space-y-4">
+        {pinnedNotes.length > 0 ? (
+          pinnedNotes.map((note) => <Note key={note.id} noteData={note} />)
+        ) : (
+          <div className=" pt-1 text-sm italic">
+            No pins yet. Pin a note to see it here.
+          </div>
+        )}
+      </div>
+      <p>Notes</p>
+      <div className=" columns-1 [column-fill:_balance] md:columns-3 lg:columns-4 gap-4 w-full space-y-4">
+        {notes.map((note) => {
+          if (!note.pinned) {
+            return <Note key={note.id} noteData={note} />;
+          }
+        })}
+      </div>
     </div>
   );
 }
