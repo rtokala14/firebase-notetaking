@@ -104,7 +104,7 @@ function Note({ noteData }: { noteData: DocumentData }) {
         </DropdownMenu>
       </div>
       <hr className=" bg-slate-200 dark:bg-slate-700 w-full h-[1px]" />
-      <div className=" overflow-hidden">{noteData.body}</div>
+      <div className=" break-all">{noteData.body}</div>
     </div>
   );
 }
