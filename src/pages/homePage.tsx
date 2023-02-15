@@ -27,7 +27,7 @@ export default function HomePage() {
           <p className="py-6 text-lg">
             Whether you're a student, a professional, or just someone who likes
             to stay organized, our note taking website has everything you need
-            to make your life easier. So why wait? Sign up today and start
+            to make your life easier. So why wait? Sign in today and start
             taking your note-taking game to the next level!
           </p>
           <div className=" flex gap-2 items-center justify-center">
