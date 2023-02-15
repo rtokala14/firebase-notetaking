@@ -16,7 +16,7 @@ export function LoggedInLayout() {
       {/* Sidebar */}
       <div
         className={cn(
-          " h-[93vh] w-18 group flex flex-col items-center gap-4 px-2  pt-4 border-r border-r-slate-200 dark:border-r-slate-800 transition-width duration-700 delay-500",
+          " h-[93vh] w-18 group flex flex-col items-center gap-4 px-2  pt-4 border-r border-r-slate-200 dark:border-r-slate-800 ",
           sideOpen && "w-36 px-0"
         )}
       >
