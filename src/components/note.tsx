@@ -48,6 +48,10 @@ function Note({ noteData }: { noteData: DocumentData }) {
     const ret = updateDoc(ref, { archive: false, trash: false });
   }
 
+  function undoArchive() {
+    const ret = updateDoc(ref, { archive: false });
+  }
+
   function deletePerm() {
     const ret = deleteDoc(ref);
   }
@@ -102,6 +106,15 @@ function Note({ noteData }: { noteData: DocumentData }) {
               >
                 <Pin className=" mr-2 h-4 w-4" />
                 <span>Pin Note</span>
+              </DropdownMenuItem>
+            )}
+            {noteData.archive && (
+              <DropdownMenuItem
+                className=" flex items-center"
+                onClick={() => undoArchive()}
+              >
+                <Undo className="  mr-2 h-4 w-4" />
+                <span className=" ">Undo Archive</span>
               </DropdownMenuItem>
             )}
             <DropdownMenuItem
