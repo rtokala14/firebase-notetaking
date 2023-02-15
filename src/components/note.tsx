@@ -52,7 +52,9 @@ function Note({ noteData }: { noteData: DocumentData }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            {noteData.pinned ? (
+            {noteData.archive || noteData.trash ? (
+              <></>
+            ) : noteData.pinned ? (
               <DropdownMenuItem
                 className=" flex items-center"
                 onClick={() => removePin()}
